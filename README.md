@@ -1,4 +1,4 @@
-# Udacity-DataScientist
+# Udacity-DataScientist Nano Degree Programme
 This repository contains the projects completed as part of Data Scientist Nanodegree programme provided by Udacity!
 
 The repository contains below folders :

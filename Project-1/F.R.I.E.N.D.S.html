@@ -13090,6 +13090,36 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Business-Understanding">Business Understanding<a class="anchor-link" href="#Business-Understanding">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset that is being used for this study is taken from Kaggle (Link : <a href="https://www.kaggle.com/rezaghari/friends-series-dataset">https://www.kaggle.com/rezaghari/friends-series-dataset</a>).
+The dataset set gives information about each episode in every season like, Summary, Duration, Director and the rating.
+We are going to conduct some analysis on the data set and will be answering below questions :</p>
+<ol>
+<li><strong>What is the total duration of each season?</strong></li>
+<li><strong>What is the average rating of each season?</strong></li>
+<li><strong>What are the highest rated episodes in each season?</strong></li>
+</ol>
+<p>So, Lets Go!!!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Understanding">Data Understanding<a class="anchor-link" href="#Data-Understanding">&#182;</a></h1>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
@@ -13117,6 +13147,40 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let&#39;s see the shape of the dataset we are dealing with</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[3]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(235, 8)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Print top 5 rows from the dataset</span>
 <span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -13131,7 +13195,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[3]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -13231,16 +13295,231 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Lets see a small summary of the dataset</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[5]:</div>
+
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year_of_prod</th>
+      <th>Season</th>
+      <th>Duration</th>
+      <th>Stars</th>
+      <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>235.000000</td>
+      <td>235.000000</td>
+      <td>235.000000</td>
+      <td>235.000000</td>
+      <td>235.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1998.982979</td>
+      <td>5.395745</td>
+      <td>22.340426</td>
+      <td>8.459574</td>
+      <td>3352.285106</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>2.831396</td>
+      <td>2.805821</td>
+      <td>1.517372</td>
+      <td>0.397029</td>
+      <td>824.214570</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>1994.000000</td>
+      <td>1.000000</td>
+      <td>22.000000</td>
+      <td>7.200000</td>
+      <td>2557.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>1997.000000</td>
+      <td>3.000000</td>
+      <td>22.000000</td>
+      <td>8.200000</td>
+      <td>2885.500000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>1999.000000</td>
+      <td>5.000000</td>
+      <td>22.000000</td>
+      <td>8.400000</td>
+      <td>3147.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>2001.000000</td>
+      <td>8.000000</td>
+      <td>22.000000</td>
+      <td>8.700000</td>
+      <td>3579.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>2004.000000</td>
+      <td>10.000000</td>
+      <td>30.000000</td>
+      <td>9.700000</td>
+      <td>10381.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="QUESTION-:1-:-What-is-the-total-duration-of-each-season?">QUESTION :1 : What is the total duration of each season?<a class="anchor-link" href="#QUESTION-:1-:-What-is-the-total-duration-of-each-season?">&#182;</a></h1>
+<p>As we can see, maximum rating obtained by an episode is <strong>9.7</strong>, maximum vote is <strong>10381</strong> and <strong>half an hour</strong> is the maximum duration of any episode in the series!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As per the questions that we have decided to answer, the columns that we are interested in are <strong>Season, Episode_Title, Duration, Stars</strong>.
+So,lets drop the other columns from the dataset</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[[</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="s1">&#39;Episode_Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Duration&#39;</span><span class="p">,</span><span class="s1">&#39;Stars&#39;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Lets see if there are any missing values in the columns we are dealing with</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[7]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Season           0
+Episode_Title    0
+Duration         0
+Stars            0
+dtype: int64</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nice, So, we dont have missing data in our dataset, so we are good to go with the modelling and evaluation!!!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Modelling-and-Evaluate-Results">Modelling and Evaluate Results<a class="anchor-link" href="#Modelling-and-Evaluate-Results">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="QUESTION-:1-:-What-is-the-total-duration-of-each-season?">QUESTION :1 : What is the total duration of each season?<a class="anchor-link" href="#QUESTION-:1-:-What-is-the-total-duration-of-each-season?">&#182;</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Group the dataset by Season</span>
@@ -13254,7 +13533,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Take the sum of duration of all the episodes in the season.</span>
@@ -13279,7 +13558,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">season_duration</span>
@@ -13295,7 +13574,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[6]:</div>
+    <div class="prompt output_prompt">Out[10]:</div>
 
 
 
@@ -13386,7 +13665,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Columns in the season_duration dataset</span>
@@ -13403,7 +13682,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[7]:</div>
+    <div class="prompt output_prompt">Out[11]:</div>
 
 
 
@@ -13428,15 +13707,49 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Utility function to plot the results</span>
+<span class="k">def</span> <span class="nf">visualize_result</span><span class="p">(</span><span class="n">x_axis_data</span><span class="p">,</span> <span class="n">y_axis_data</span><span class="p">,</span> <span class="n">plot_title</span><span class="p">,</span> <span class="n">x_label</span><span class="p">,</span> <span class="n">y_label</span><span class="p">,</span> <span class="n">orientation</span><span class="p">,</span> <span class="n">apply_limits_x_axis</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the graph using the parameters provided as input</span>
+<span class="sd">    Parameters :</span>
+<span class="sd">    x_axis_data (series) : Data to be used for plotting x-axis</span>
+<span class="sd">    y_axis_data (series) : Data to be used for plotting y-axis</span>
+<span class="sd">    plot_title (string) : Plot Title</span>
+<span class="sd">    x_label (string) : X-Axis label</span>
+<span class="sd">    y_label (string) : Y-Axis Label</span>
+<span class="sd">    orientation (string) : plot orientation, vertical, horizontal</span>
+<span class="sd">    apply_limits_x_axis (bool) : True if limit has to be applied, otherwise False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_axis_data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_axis_data</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;mako&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span> <span class="n">orientation</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">apply_limits_x_axis</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">8.2</span><span class="p">,</span><span class="mf">8.8</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The plot will be created with Season on x-axis and Duration on Y-Axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">season_duration</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">season_duration</span><span class="o">.</span><span class="n">Duration</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;mako&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Total Duration of each Season&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Duration&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">visualize_result</span><span class="p">(</span><span class="n">season_duration</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span> 
+                 <span class="n">season_duration</span><span class="o">.</span><span class="n">Duration</span><span class="p">,</span> 
+                 <span class="s1">&#39;Total Duration of each Season&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;Season&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;Duration&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13446,19 +13759,6 @@ div#notebook {
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[8]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>Text(0, 0.5, &#39;Duration&#39;)</pre>
-</div>
-
-</div>
 
 <div class="output_area">
 
@@ -13490,13 +13790,13 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="QUESTION-:2-:-What-is-the-average-rating-of-each-season?">QUESTION :2 : What is the average rating of each season?<a class="anchor-link" href="#QUESTION-:2-:-What-is-the-average-rating-of-each-season?">&#182;</a></h1>
+<h3 id="QUESTION-:2-:-What-is-the-average-rating-of-each-season?">QUESTION :2 : What is the average rating of each season?<a class="anchor-link" href="#QUESTION-:2-:-What-is-the-average-rating-of-each-season?">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># From the grouped data that we calculated previously, this take mean of the Stars column per season to get the average rating</span>
@@ -13519,7 +13819,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">average_rating</span>
@@ -13535,7 +13835,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[10]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
@@ -13626,7 +13926,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Columns in average_rating dataset</span>
@@ -13643,7 +13943,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[11]:</div>
+    <div class="prompt output_prompt">Out[16]:</div>
 
 
 
@@ -13660,16 +13960,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This time, we will plot Stars on X- Axis and Season on Y-Axis</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">average_rating</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">average_rating</span><span class="o">.</span><span class="n">Stars</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;mako&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Rating of Each Season&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Rating&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">8.2</span><span class="p">,</span><span class="mf">8.8</span><span class="p">)</span>
+<span class="n">visualize_result</span><span class="p">(</span><span class="n">average_rating</span><span class="o">.</span><span class="n">Stars</span><span class="p">,</span> 
+                 <span class="n">average_rating</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span> 
+                 <span class="s1">&#39;Average Rating of Each Season&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;Average Rating&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;Season&#39;</span><span class="p">,</span> 
+                 <span class="s1">&#39;horizontal&#39;</span><span class="p">,</span>
+                  <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13682,26 +13983,13 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[12]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(8.2, 8.8)</pre>
-</div>
-
-</div>
-
-<div class="output_area">
-
     <div class="prompt"></div>
 
 
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
+<img src="data:image/png;base64,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
 "
 >
 </div>
@@ -13715,13 +14003,21 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="QUESTION-:3-:-What-are-the-highest-rated-episodes-in-each-season?">QUESTION :3 : What are the highest rated episodes in each season?<a class="anchor-link" href="#QUESTION-:3-:-What-are-the-highest-rated-episodes-in-each-season?">&#182;</a></h1>
+<p><strong>Not surprised,Season 10 is the most loved season of the entire series!</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="QUESTION-:3-:-What-are-the-highest-rated-episodes-in-each-season?">QUESTION :3 : What are the highest rated episodes in each season?<a class="anchor-link" href="#QUESTION-:3-:-What-are-the-highest-rated-episodes-in-each-season?">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># From the grouped data, get the maximum rating obtained by an episode in each season</span>
@@ -13743,7 +14039,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">highest_rated_episode_per_season</span>
@@ -13759,7 +14055,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[14]:</div>
+    <div class="prompt output_prompt">Out[19]:</div>
 
 
 
@@ -13859,62 +14155,25 @@ title for each season using Season and Stars column from highest_rated_episode_p
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">season</span> <span class="ow">in</span> <span class="n">highest_rated_episode_per_season</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">season</span><span class="p">)</span>
-</pre></div>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_highest_rated_episode_per_season</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Returns the highest rated episode for each season.&quot;&quot;&quot;</span>
+    <span class="c1"># Define empty list</span>
+    <span class="n">episodes</span> <span class="o">=</span> <span class="p">[]</span>
 
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Pandas(Index=0, Season=1, Stars=9.0)
-Pandas(Index=1, Season=2, Stars=9.4)
-Pandas(Index=2, Season=3, Stars=9.1)
-Pandas(Index=3, Season=4, Stars=9.5)
-Pandas(Index=4, Season=5, Stars=9.7)
-Pandas(Index=5, Season=6, Stars=9.3)
-Pandas(Index=6, Season=7, Stars=9.2)
-Pandas(Index=7, Season=8, Stars=9.3)
-Pandas(Index=8, Season=9, Stars=8.8)
-Pandas(Index=9, Season=10, Stars=9.7)
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Define empty list</span>
-<span class="n">episodes</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="c1"># Iterate through highest_rated_episode_per_season dataset</span>
-<span class="k">for</span> <span class="n">highest_rated</span> <span class="ow">in</span> <span class="n">highest_rated_episode_per_season</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
-    <span class="c1"># Iterate through original data set and take only Season, Episode Title, Stars columns</span>
-    <span class="k">for</span> <span class="n">original_dataset</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">[[</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span><span class="s1">&#39;Episode_Title&#39;</span><span class="p">,</span><span class="s1">&#39;Stars&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>        
-        <span class="c1"># Wherever season from highest_rated_episode_per_season datset matches with season from dataset </span>
-        <span class="c1"># and stars from highest_rated_episode_per_season dataset matches with stars from dataset</span>
-        <span class="c1"># add Season, Episode Title and Stars as a list item in our episodes list</span>
-        <span class="k">if</span> <span class="n">highest_rated</span><span class="o">.</span><span class="n">Season</span> <span class="o">==</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Season</span> <span class="ow">and</span> <span class="n">highest_rated</span><span class="o">.</span><span class="n">Stars</span> <span class="o">==</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Stars</span> <span class="p">:</span>
-            <span class="n">episodes</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">original_dataset</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Episode_Title</span><span class="p">,</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Stars</span><span class="p">])</span>
+    <span class="c1"># Iterate through highest_rated_episode_per_season dataset</span>
+    <span class="k">for</span> <span class="n">highest_rated</span> <span class="ow">in</span> <span class="n">highest_rated_episode_per_season</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>
+        <span class="c1"># Iterate through original data set and take only Season, Episode Title, Stars columns</span>
+        <span class="k">for</span> <span class="n">original_dataset</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">[[</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span><span class="s1">&#39;Episode_Title&#39;</span><span class="p">,</span><span class="s1">&#39;Stars&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">itertuples</span><span class="p">():</span>        
+            <span class="c1"># Wherever season from highest_rated_episode_per_season datset matches with season from dataset </span>
+            <span class="c1"># and stars from highest_rated_episode_per_season dataset matches with stars from dataset</span>
+            <span class="c1"># add Season, Episode Title and Stars as a list item in our episodes list</span>
+            <span class="k">if</span> <span class="n">highest_rated</span><span class="o">.</span><span class="n">Season</span> <span class="o">==</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Season</span> <span class="ow">and</span> <span class="n">highest_rated</span><span class="o">.</span><span class="n">Stars</span> <span class="o">==</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Stars</span> <span class="p">:</span>
+                <span class="n">episodes</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">original_dataset</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Episode_Title</span><span class="p">,</span> <span class="n">original_dataset</span><span class="o">.</span><span class="n">Stars</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">episodes</span>
 </pre></div>
 
     </div>
@@ -13932,44 +14191,13 @@ Pandas(Index=9, Season=10, Stars=9.7)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">episodes</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">highes_rated_episodes</span> <span class="o">=</span> <span class="n">get_highest_rated_episode_per_season</span><span class="p">()</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt output_prompt">Out[17]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>[[1, &#39;The One with the Blackout&#39;, 9.0],
- [2, &#39;The One with the Prom Video&#39;, 9.4],
- [3, &#39;The One with the Flashback&#39;, 9.1],
- [3, &#39;The One with the Morning After&#39;, 9.1],
- [4, &#39;The One with the Embryos&#39;, 9.5],
- [5, &#39;The One Where Everybody Finds Out&#39;, 9.7],
- [6, &#39;The One with the Proposal&#39;, 9.3],
- [7, &#34;The One with Monica and Chandler&#39;s Wedding: Part 2&#34;, 9.2],
- [8, &#39;The One with the Videotape&#39;, 9.3],
- [8, &#39;The One with the Rumor&#39;, 9.3],
- [9, &#34;The One with Rachel&#39;s Other Sister&#34;, 8.8],
- [10, &#39;The Last One&#39;, 9.7]]</pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13984,11 +14212,11 @@ Pandas(Index=9, Season=10, Stars=9.7)
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert the list into dataframe </span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">episodes</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="s1">&#39;Episode Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Stars&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">highes_rated_episodes</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="s1">&#39;Episode Title&#39;</span><span class="p">,</span> <span class="s1">&#39;Stars&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -14001,7 +14229,7 @@ Pandas(Index=9, Season=10, Stars=9.7)
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[18]:</div>
+    <div class="prompt output_prompt">Out[22]:</div>
 
 
 

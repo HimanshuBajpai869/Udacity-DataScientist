@@ -8,6 +8,7 @@ The repository contains below folders :
                  Blog Link : https://medium.com/@himanshubajpai869/the-one-where-f-r-i-e-n-d-s-met-data-scientist-49924f246a54
                  
 2. Project - 2 : Under this project, below pipelines were created :
+
                   * ETL pipeline : 
                         - To prepare the data ready for modelling.
                         - Different Data cleaning process were applied like, removal of punctuations, converting to root forms etc.

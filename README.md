@@ -19,6 +19,9 @@ The repository contains below folders :
                         - Best parameters of the algorithm were obtained by Grid Search CV.
                         - Model was exported using pickle library
                         
+                  * Flask Based Web App :
+                        - API to consume the model created using ML pipeline for end user to use.
+                        
                   
                                     
                  

@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from plotly.graph_objs import Bar, Layout, Figure
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
 
@@ -39,32 +39,47 @@ model = joblib.load("../models/classifier.pkl")
 def index():
     
     # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
     
+    genre_composition = df.loc[:,'genre':].groupby('genre').sum()
+    direct_composition = genre_composition.iloc[0].sort_values()
+    news_composition = genre_composition.iloc[1].sort_values()
+    social_composition = genre_composition.iloc[2].sort_values()
     # create visuals
-    # TODO: Below is an example - modify to create your own visuals
-    graphs = [
-        {
-            'data': [
-                Bar(
-                    x=genre_names,
-                    y=genre_counts
-                )
-            ],
+    trace1 = [Bar(x=genre_names,
+                  y=genre_counts)]
 
-            'layout': {
-                'title': 'Distribution of Message Genres',
-                'yaxis': {
-                    'title': "Count"
-                },
-                'xaxis': {
-                    'title': "Genre"
-                }
-            }
-        }
-    ]
+    layout1 = Layout(title= 'Distribution of Message Genres',
+                     yaxis= {'title': "Count"},
+                     xaxis= {'title': "Genre"})
+    fig1 = Figure(data = trace1, layout = layout1)
+    
+    trace2 = [Bar(y=direct_composition,
+                  x=direct_composition.index.tolist())]
+
+    layout2 = Layout(title= 'Labels of Messages under Direct Genre',
+                     yaxis= {'title': "Count"}
+                     )
+    fig2 = Figure(data = trace2, layout = layout2)
+
+    trace3 = [Bar(y=news_composition,
+                  x=news_composition.index.tolist())]
+
+    layout3 = Layout(title= 'Labels of Messages under News Genre',
+                     yaxis= {'title': "Count"}
+                    )
+    fig3 = Figure(data = trace3, layout = layout3)
+
+    trace4 = [Bar(y=social_composition,
+                  x=social_composition.index.tolist())]
+
+    layout4 = Layout(title= 'Labels of Messages under Social Genre',
+                     yaxis= {'title': "Count"},
+                     )
+    fig4 = Figure(data = trace4, layout = layout4)
+
+    graphs = [fig1, fig2, fig3, fig4]
     
     # encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]

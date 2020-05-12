@@ -31,7 +31,7 @@ def remove_tags(text, tag):
     tokens = text.split()
     for token in tokens:
         if token.startswith(tag):
-            text = text.replace(token, '')
+            text = text.replace(token, token[1:])
     
     return text
 
@@ -130,3 +130,5 @@ def get_cleaned_text(text):
     text = lemmatize_words(text)
     
     return text
+
+remove_tags('There is an earthquake in Delhi. #Disaster', '#')

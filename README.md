@@ -22,6 +22,9 @@ The repository contains below folders :
                   * Flask Based Web App :
                         - API to consume the model created using ML pipeline for end user to use.
                         
+ 3. Project - 3 : Recommender System created from IBM Community Dataset
+ 
+ 4. Project - 4 : Capstone Project on identifying Fake or Real tweets related to Disaster. The dataset is taken from Kaggle : https://www.kaggle.com/c/nlp-getting-started/data
                   
                                     
                  

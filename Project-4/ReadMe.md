@@ -41,3 +41,5 @@ Performance measure from different ML Algorithm
 ![image](https://user-images.githubusercontent.com/52653296/81724942-c9d4ca00-94a2-11ea-8fdc-ddd85c7d8f87.png)
 
 After Performance Tuning, Logistic Regression model performance was increase to 69%.
+
+Blog Link : https://medium.com/@himanshubajpai869/real-or-not-nlp-with-disaster-tweets-77ab3ba8325f

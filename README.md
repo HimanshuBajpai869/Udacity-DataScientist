@@ -25,6 +25,7 @@ The repository contains below folders :
  3. Project - 3 : Recommender System created from IBM Community Dataset
  
  4. Project - 4 : Capstone Project on identifying Fake or Real tweets related to Disaster. The dataset is taken from Kaggle : https://www.kaggle.com/c/nlp-getting-started/data
+ Blog Link : https://medium.com/@himanshubajpai869/real-or-not-nlp-with-disaster-tweets-77ab3ba8325f
                   
                                     
                  
